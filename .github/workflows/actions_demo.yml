@@ -1,0 +1,22 @@
+name: GitHub Actions Demo
+
+# 1. Trigger the workflow on every push to the main branch
+on:
+  push:
+    branches: [ master ]
+
+# 2. Define the jobs to run
+jobs:
+  say-hello:
+    # 3. Choose the operating system runner
+    runs-on: ubuntu-latest
+
+    # 4. List the sequential steps
+    steps:
+      # Step A: Check out your repository code onto the runner
+      - name: Check out repository code
+        uses: actions/checkout@v4
+
+      # Step B: Run a simple echo command in the terminal
+      - name: Run a one-line script
+        run: echo "Hello World! GitHub Actions is working."
