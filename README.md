@@ -2,6 +2,8 @@
 
 Conway's Game of Life is a "zero-player game" that takes place on a two-dimensional grid of cells. Each cell can be in one of two states: Alive or Dead.
 
+This is a finite 700x700 board made up of 70x70 squares.
+
 The game progresses in steps (or "generations"). To calculate the next generation, you look at each cell and its 8 immediate neighbors (horizontal, vertical, and diagonal) and apply these four simple rules:
 
 ## The Rules
