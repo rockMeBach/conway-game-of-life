@@ -10,9 +10,18 @@ let gameState = Array.from(
     () => Array(WIDTH / SQUARE_SIZE).fill(0)
 );
 
-gameState[0][1] = 1;
-gameState[1][0] = 1;
-gameState[0][2] = 1;
+//DEF R-pentomino, centred: a methuselah that stays chaotic for 1103 generations.
+//   .XX
+//   XX.
+//   .X.
+const CENTER_ROW = Math.floor(gameState.length / 2);
+const CENTER_COL = Math.floor(gameState[0].length / 2);
+
+gameState[CENTER_ROW - 1][CENTER_COL] = 1;
+gameState[CENTER_ROW - 1][CENTER_COL + 1] = 1;
+gameState[CENTER_ROW][CENTER_COL - 1] = 1;
+gameState[CENTER_ROW][CENTER_COL] = 1;
+gameState[CENTER_ROW + 1][CENTER_COL] = 1;
 
 function createCanvas(){
     const canvas = document.createElement("canvas");
@@ -64,7 +73,7 @@ function updateGameState(grid){
         if(i - 1 >= 0 && j + 1 < grid[i].length && grid[i - 1][j + 1] === 1) neighbors += 1; // top right
 
         if(i + 1 < grid.length && j - 1 >= 0 && grid[i + 1][j - 1] === 1) neighbors += 1; // bottom left
-        if(i + 1 < grid.length && j + 1 < grid.length && grid[i + 1][j + 1] === 1) neighbors += 1; // bottom right
+        if(i + 1 < grid.length && j + 1 < grid[i].length && grid[i + 1][j + 1] === 1) neighbors += 1; // bottom right
 
         return neighbors;
     }
@@ -73,14 +82,12 @@ function updateGameState(grid){
         for(let j = 0; j < grid[i].length; j++){
             const neighbors = countNeighbors(i, j);
 
-            if(neighbors < 2) {
-                next[i][j] = 0;
-            }else if(grid[i][j] === 0 && (neighbors === 2 || neighbors === 3)) {
-                next[i][j] = 1;
-            }else if(neighbors > 3) {
+            if(grid[i][j] === 1 && neighbors < 2) {
                 next[i][j] = 0;
             }else if(grid[i][j] === 0 && neighbors === 3) {
                 next[i][j] = 1;
+            }else if(grid[i][j] === 1 && neighbors > 3) {
+                next[i][j] = 0;
             }
         }
     }
