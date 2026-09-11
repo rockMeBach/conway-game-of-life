@@ -11,4 +11,8 @@ The game progresses in steps (or "generations"). To calculate the next generatio
 - **Overpopulation:** Any live cell with more than three live neighbors dies. (As if by overcrowding).
 - **Reproduction:** Any dead cell with exactly three live neighbors becomes a live cell.
 
-*It's fascinating that such a simple set of rules can create such a complex system.*
+## Initial state of the game
+
+- This game begins with a R-pentomino pattern, it's highly chaotic and hard to stabilize.
+
+*A simple set of rules creates a complex system that results in a visual delectation.*
