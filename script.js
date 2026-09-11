@@ -1,4 +1,4 @@
-const FRAME_RATE = 10000 / 60;
+const FRAME_RATE = 1000 / 60;
 const HEIGHT = 700;
 const WIDTH = 700;
 const SQUARE_SIZE = 10;
